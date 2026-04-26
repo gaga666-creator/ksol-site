@@ -23,11 +23,6 @@ const summaryItems = [
   { title: "SOL Reference", body: "1:1 target model" },
 ];
 
-const networkInteraction = [
-  "KSOL is used for internal transfer and value referencing.",
-  "Interactions occur via on-chain transactions.",
-];
-
 const tokenInfo = [
   { label: "Chain", value: "Solana" },
   { label: "Mint Address", value: tokenMintAddress, copy: true, solscan: true },
@@ -209,22 +204,6 @@ export default function Home() {
               Liquidity and price are dependent on external pool depth and
               trading activity.
             </p>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
-          <div className="mb-8">
-            <p className="text-sm text-neutral-500">Network Interaction</p>
-            <h2 className="mt-3 text-4xl font-semibold text-white">
-              On-chain usage context
-            </h2>
-          </div>
-          <div className={`${surfaceClass} grid gap-3 p-4 md:grid-cols-2`}>
-            {networkInteraction.map((item) => (
-              <div key={item} className="rounded-3xl bg-black/20 p-5">
-                <p className="text-sm leading-6 text-neutral-400">{item}</p>
-              </div>
-            ))}
           </div>
         </section>
 
