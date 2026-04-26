@@ -4,21 +4,25 @@ export const tokenMintAddress =
 export const externalLinks = [
   {
     name: "Solscan",
+    category: "Explorer",
     href: `https://solscan.io/token/${tokenMintAddress}`,
     description: "View token details on Solana explorer.",
   },
   {
     name: "Birdeye",
+    category: "Analytics",
     href: `https://birdeye.so/token/${tokenMintAddress}?chain=solana`,
     description: "View third-party market reference data.",
   },
   {
     name: "Dexscreener",
+    category: "DEX Market",
     href: `https://dexscreener.com/solana/${tokenMintAddress}`,
     description: "View external liquidity and pair information.",
   },
   {
     name: "Jupiter",
+    category: "Aggregator",
     href: `https://jup.ag/swap/SOL-${tokenMintAddress}`,
     description: "Open the SOL to KSOL swap route.",
   },

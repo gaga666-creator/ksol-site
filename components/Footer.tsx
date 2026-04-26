@@ -11,9 +11,8 @@ export function Footer() {
           <div>
             <p className="font-semibold text-white">KSOL</p>
             <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-400">
-              KSOL is a SOL-pegged storage asset for storage and internal value
-              transfer. It does not represent an income, reward, or appreciation
-              guarantee.
+              KSOL is a SOL-referenced digital unit for internal transfer and
+              storage representation. Market pricing may vary.
             </p>
           </div>
         </div>

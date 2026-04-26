@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KSOL | SOL-Pegged Storage Asset",
+  title: "KSOL | SOL-Referenced Digital Asset",
   description:
-    "KSOL is a SOL-pegged storage asset designed for storage and internal value transfer.",
+    "KSOL is a SOL-referenced digital unit designed for internal transfer and storage representation.",
 };
 
 export default function RootLayout({

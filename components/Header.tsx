@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { externalLinks } from "@/lib/ksol";
 import { KsolLogo } from "./KsolLogo";
+import { LanguageToggle } from "./LanguageToggle";
 
 export function Header() {
   return (
@@ -10,7 +11,9 @@ export function Header() {
           <KsolLogo size={32} />
           <div>
             <p className="text-sm font-semibold text-white">KSOL</p>
-            <p className="text-xs text-neutral-400">SOL-Pegged Storage Asset</p>
+            <p className="text-xs text-neutral-400">
+              SOL-referenced digital asset
+            </p>
           </div>
         </Link>
         <nav className="flex items-center gap-4 text-sm text-neutral-300 sm:gap-6">
@@ -25,6 +28,7 @@ export function Header() {
           >
             Solscan
           </a>
+          <LanguageToggle />
         </nav>
       </div>
     </header>
