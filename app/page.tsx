@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { CopyButton } from "@/components/CopyButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { KsolLogo } from "@/components/KsolLogo";
 import { PriceReferencePanel } from "@/components/PriceReferencePanel";
+import { useLanguage } from "@/components/LanguageProvider";
 import { externalLinks, tokenMintAddress } from "@/lib/ksol";
 
 const trustItems = [
@@ -37,6 +40,36 @@ const liquidityContext = [
   { label: "Market Source", value: "DEX-based pricing" },
 ];
 
+const resourceLinks = [
+  { label: "Website", href: "/", internal: true, note: "Official site" },
+  { label: "Docs", href: "/docs", internal: true, note: "Documentation" },
+  ...externalLinks.map((link) => ({
+    label: link.name,
+    href: link.href,
+    internal: false,
+    note: link.category,
+  })),
+];
+
+const verificationItems = [
+  {
+    label: "Verify mint address",
+    href: externalLinks[0].href,
+  },
+  {
+    label: "Check token holders",
+    href: externalLinks[0].href,
+  },
+  {
+    label: "Review liquidity pair",
+    href: externalLinks.find((link) => link.label === "Dexscreener")?.href ?? "#",
+  },
+  {
+    label: "Confirm market route availability",
+    href: externalLinks.find((link) => link.label === "Jupiter")?.href ?? "#",
+  },
+];
+
 const surfaceClass =
   "rounded-[34px] bg-gradient-to-br from-white/[0.06] via-white/[0.028] to-white/[0.012] shadow-[0_26px_80px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl";
 
@@ -44,6 +77,14 @@ const pillClass =
   "inline-flex min-h-11 items-center justify-center rounded-full px-6 text-sm font-semibold transition duration-200";
 
 export default function Home() {
+  const { t } = useLanguage();
+  const marketLinks = externalLinks
+    .filter((link) => link.label !== "Jupiter")
+    .map((link) => ({
+      ...link,
+      categoryLabel: t(link.category),
+    }));
+
   return (
     <>
       <Header />
@@ -56,18 +97,19 @@ export default function Home() {
                 KSOL
               </h1>
               <p className="mt-5 text-2xl font-light text-neutral-300">
-                SOL-referenced digital asset
+                {t("SOL-referenced digital asset")}
               </p>
               <p className="mt-7 max-w-md text-lg leading-8 text-neutral-400">
-                KSOL is a SOL-referenced unit designed for internal transfer
-                and storage representation.
+                {t(
+                  "KSOL is a SOL-referenced unit designed for internal transfer and storage representation.",
+                )}
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/docs"
                   className={`${pillClass} bg-neutral-100 text-black shadow-[0_14px_30px_rgba(0,0,0,0.22)] hover:bg-white hover:shadow-[0_18px_38px_rgba(0,0,0,0.28)]`}
                 >
-                  View Docs
+                  {t("View Docs")}
                 </Link>
                 <a
                   href={externalLinks[0].href}
@@ -75,7 +117,7 @@ export default function Home() {
                   rel="noreferrer"
                   className={`${pillClass} bg-white/[0.055] text-neutral-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur hover:bg-white/[0.09] hover:shadow-[0_14px_30px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.12)]`}
                 >
-                  View on Solscan
+                  {t("View on Solscan")}
                 </a>
               </div>
             </div>
@@ -91,7 +133,7 @@ export default function Home() {
                 key={item.label}
                 className="rounded-3xl p-5 md:border-l md:border-white/[0.06] md:first:border-l-0"
               >
-                <p className="text-xs text-neutral-500">{item.label}</p>
+                <p className="text-xs text-neutral-500">{t(item.label)}</p>
                 <div className="mt-2 flex items-center justify-between gap-3">
                   <p className="font-medium text-neutral-100">{item.value}</p>
                   {item.copy ? <CopyButton value={tokenMintAddress} /> : null}
@@ -106,9 +148,9 @@ export default function Home() {
             {summaryItems.map((item) => (
               <div key={item.title} className="rounded-3xl bg-black/18 p-6">
                 <h2 className="text-2xl font-semibold text-white">
-                  {item.title}
+                  {t(item.title)}
                 </h2>
-                <p className="mt-3 text-neutral-500">{item.body}</p>
+                <p className="mt-3 text-neutral-500">{t(item.body)}</p>
               </div>
             ))}
           </div>
@@ -116,16 +158,16 @@ export default function Home() {
 
         <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
           <div className="mb-8">
-            <p className="text-sm text-neutral-500">Available on</p>
+            <p className="text-sm text-neutral-500">{t("Available on")}</p>
             <h2 className="mt-3 text-4xl font-semibold text-white">
-              Market Presence
+              {t("Market Presence")}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-neutral-500">
-              Pricing and liquidity are determined by external markets.
+              {t("Pricing and liquidity are determined by external markets.")}
             </p>
           </div>
           <div className={`${surfaceClass} grid gap-3 p-4 md:grid-cols-4`}>
-            {externalLinks.map((link) => (
+            {marketLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -137,7 +179,7 @@ export default function Home() {
                   {link.name}
                 </span>
                 <span className="mt-1 text-xs text-neutral-500">
-                  {link.category}
+                  {link.categoryLabel}
                 </span>
               </a>
             ))}
@@ -146,12 +188,14 @@ export default function Home() {
 
         <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
           <div className="mb-8">
-            <p className="text-sm text-neutral-500">Token Information</p>
+            <p className="text-sm text-neutral-500">
+              {t("Token Information")}
+            </p>
             <h2 className="mt-3 text-4xl font-semibold text-white">
-              On-chain reference
+              {t("On-chain reference")}
             </h2>
             <p className="mt-4 text-sm text-neutral-500">
-              All token data is verifiable via public Solana explorers.
+              {t("All token data is verifiable via public Solana explorers.")}
             </p>
           </div>
           <div className={`${surfaceClass} divide-y divide-white/[0.06] p-2`}>
@@ -160,9 +204,9 @@ export default function Home() {
                 key={item.label}
                 className="grid gap-3 px-5 py-5 md:grid-cols-[180px_1fr_auto] md:items-center"
               >
-                <p className="text-sm text-neutral-500">{item.label}</p>
+                <p className="text-sm text-neutral-500">{t(item.label)}</p>
                 <p className="break-words font-mono text-sm text-neutral-100">
-                  {item.value}
+                  {t(item.value)}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {item.solscan ? (
@@ -172,7 +216,7 @@ export default function Home() {
                       rel="noreferrer"
                       className="rounded-full bg-white/[0.055] px-4 py-1.5 text-xs font-medium text-neutral-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-200 hover:bg-white/[0.09] hover:text-white"
                     >
-                      View on Solscan
+                      {t("View on Solscan")}
                     </a>
                   ) : null}
                   {item.copy ? <CopyButton value={tokenMintAddress} /> : null}
@@ -184,35 +228,123 @@ export default function Home() {
 
         <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
           <div className="mb-8">
-            <p className="text-sm text-neutral-500">Liquidity Context</p>
+            <p className="text-sm text-neutral-500">
+              {t("Liquidity Context")}
+            </p>
             <h2 className="mt-3 text-4xl font-semibold text-white">
-              External market depth
+              {t("External market depth")}
             </h2>
           </div>
           <div className={`${surfaceClass} p-7`}>
             <div className="grid gap-4 md:grid-cols-2">
               {liquidityContext.map((item) => (
                 <div key={item.label} className="rounded-3xl bg-black/20 p-5">
-                  <p className="text-xs text-neutral-500">{item.label}</p>
+                  <p className="text-xs text-neutral-500">{t(item.label)}</p>
                   <p className="mt-2 font-medium text-neutral-100">
-                    {item.value}
+                    {t(item.value)}
                   </p>
                 </div>
               ))}
             </div>
             <p className="mt-6 max-w-3xl text-sm leading-6 text-neutral-500">
-              Liquidity and price are dependent on external pool depth and
-              trading activity.
+              {t(
+                "Liquidity and price are dependent on external pool depth and trading activity.",
+              )}
+            </p>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
+          <div className="mb-8">
+            <p className="text-sm text-neutral-500">
+              {t("Official Resources")}
+            </p>
+            <h2 className="mt-3 text-4xl font-semibold text-white">
+              {t("Official Resources")}
+            </h2>
+          </div>
+          <div className={`${surfaceClass} divide-y divide-white/[0.06] p-2`}>
+            {resourceLinks.map((link) => {
+              const content = (
+                <>
+                  <span className="font-medium text-neutral-100">
+                    {t(link.label)}
+                  </span>
+                  <span className="text-xs text-neutral-500">
+                    {t(link.note)}
+                  </span>
+                </>
+              );
+
+              return link.internal ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="flex items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/[0.035]"
+                >
+                  {content}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/[0.035]"
+                >
+                  {content}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
+          <div className="mb-8">
+            <p className="text-sm text-neutral-500">
+              {t("Verification Checklist")}
+            </p>
+            <h2 className="mt-3 text-4xl font-semibold text-white">
+              {t("Verification Checklist")}
+            </h2>
+          </div>
+          <div className={`${surfaceClass} grid gap-3 p-4 md:grid-cols-4`}>
+            {verificationItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-3xl bg-black/20 p-5 text-sm text-neutral-300 transition hover:bg-white/[0.055]"
+              >
+                {t(item.label)}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
+          <div className={`${surfaceClass} p-7`}>
+            <h2 className="text-xl font-semibold text-white">
+              {t("Market Context")}
+            </h2>
+            <p className="mt-4 max-w-3xl leading-7 text-neutral-400">
+              {t(
+                "KSOL market pricing depends on external liquidity pools, routing availability, and trading activity. Users should verify market conditions before interacting.",
+              )}
             </p>
           </div>
         </section>
 
         <section className="mx-auto max-w-6xl px-6 py-14">
           <div className={`${surfaceClass} p-7`}>
-            <h2 className="text-xl font-semibold text-white">Risk Notice</h2>
+            <h2 className="text-xl font-semibold text-white">
+              {t("Risk Notice")}
+            </h2>
             <p className="mt-4 max-w-3xl leading-7 text-neutral-400">
-              KSOL is a reference-based digital unit and does not guarantee
-              price stability or asset backing. Market pricing may vary.
+              {t(
+                "KSOL is a reference-based digital unit and does not guarantee price stability or asset backing. Market pricing may vary.",
+              )}
             </p>
           </div>
         </section>

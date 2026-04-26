@@ -26,9 +26,9 @@ export const externalLinks = [
   {
     label: "Jupiter",
     name: "Jupiter",
-    category: "Aggregator",
+    category: "Aggregator availability dependent on routing",
     href: `https://jup.ag/swap?inputMint=So11111111111111111111111111111111111111112&outputMint=${tokenMintAddress}`,
-    description: "Open the SOL to KSOL swap route.",
+    description: "Routing availability depends on Jupiter market routing.",
   },
 ];
 

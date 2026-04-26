@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 export function LanguageToggle() {
-  const [language, setLanguage] = useState<"EN" | "中文">("EN");
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div className="flex rounded-full bg-white/[0.055] p-1 text-xs text-neutral-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
