@@ -20,10 +20,19 @@ const trustItems = [
   { label: "Liquidity Pair", value: "SOL/KSOL" },
 ];
 
-const summaryItems = [
-  { title: "Storage", body: "Reference-based unit" },
-  { title: "Transfer", body: "Internal movement" },
-  { title: "SOL Reference", body: "1:1 target model" },
+const utilityItems = [
+  {
+    title: "Storage",
+    body: "Reference-based unit for storage representation.",
+  },
+  {
+    title: "Transfer",
+    body: "Designed for internal movement between wallets or accounts.",
+  },
+  {
+    title: "SOL Reference",
+    body: "Structured around SOL-based reference logic.",
+  },
 ];
 
 const tokenInfo = [
@@ -31,43 +40,7 @@ const tokenInfo = [
   { label: "Mint Address", value: tokenMintAddress, copy: true, solscan: true },
   { label: "Token Standard", value: "SPL" },
   { label: "Decimals", value: "Explorer verified" },
-  { label: "Supply", value: "Public explorer reference" },
   { label: "Liquidity Pair", value: "SOL/KSOL" },
-];
-
-const liquidityContext = [
-  { label: "Primary Pair", value: "SOL / KSOL" },
-  { label: "Market Source", value: "DEX-based pricing" },
-];
-
-const resourceLinks = [
-  { label: "Website", href: "/", internal: true, note: "Official site" },
-  { label: "Docs", href: "/docs", internal: true, note: "Documentation" },
-  ...externalLinks.map((link) => ({
-    label: link.name,
-    href: link.href,
-    internal: false,
-    note: link.category,
-  })),
-];
-
-const verificationItems = [
-  {
-    label: "Verify mint address",
-    href: externalLinks[0].href,
-  },
-  {
-    label: "Check token holders",
-    href: externalLinks[0].href,
-  },
-  {
-    label: "Review liquidity pair",
-    href: externalLinks.find((link) => link.label === "Dexscreener")?.href ?? "#",
-  },
-  {
-    label: "Confirm market route availability",
-    href: externalLinks.find((link) => link.label === "Jupiter")?.href ?? "#",
-  },
 ];
 
 const surfaceClass =
@@ -78,19 +51,15 @@ const pillClass =
 
 export default function Home() {
   const { t } = useLanguage();
-  const marketLinks = externalLinks
-    .filter((link) => link.label !== "Jupiter")
-    .map((link) => ({
-      ...link,
-      categoryLabel: t(link.category),
-    }));
+  const solscanLink =
+    externalLinks.find((link) => link.label === "Solscan")?.href ?? "#";
 
   return (
     <>
       <Header />
       <main className="bg-[#050505] text-neutral-100">
         <section className="bg-[radial-gradient(circle_at_18%_8%,rgba(245,245,245,0.12),transparent_26%),linear-gradient(180deg,#050505,#101010_70%,#050505)]">
-          <div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-16 px-6 py-16 md:grid-cols-[1.08fr_0.92fr]">
+          <div className="mx-auto grid min-h-[680px] max-w-6xl items-center gap-14 px-6 py-14 md:grid-cols-[56fr_44fr] md:py-16">
             <div>
               <KsolLogo size={104} />
               <h1 className="mt-9 text-7xl font-bold leading-none text-white drop-shadow-[0_18px_44px_rgba(0,0,0,0.34)] sm:text-8xl">
@@ -112,7 +81,7 @@ export default function Home() {
                   {t("View Docs")}
                 </Link>
                 <a
-                  href={externalLinks[0].href}
+                  href={solscanLink}
                   target="_blank"
                   rel="noreferrer"
                   className={`${pillClass} bg-white/[0.055] text-neutral-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur hover:bg-white/[0.09] hover:shadow-[0_14px_30px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.12)]`}
@@ -144,14 +113,25 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
-          <div className={`${surfaceClass} grid gap-3 p-4 md:grid-cols-3`}>
-            {summaryItems.map((item) => (
-              <div key={item.title} className="rounded-3xl bg-black/18 p-6">
-                <h2 className="text-2xl font-semibold text-white">
+          <div className="mb-8">
+            <p className="text-sm text-neutral-500">{t("Core Utility")}</p>
+            <h2 className="mt-3 text-4xl font-semibold text-white">
+              {t("Core Utility")}
+            </h2>
+          </div>
+          <div className="grid items-stretch gap-4 md:grid-cols-3">
+            {utilityItems.map((item) => (
+              <article
+                key={item.title}
+                className={`${surfaceClass} flex min-h-44 flex-col justify-between p-7`}
+              >
+                <h3 className="text-2xl font-semibold text-white">
                   {t(item.title)}
-                </h2>
-                <p className="mt-3 text-neutral-500">{t(item.body)}</p>
-              </div>
+                </h3>
+                <p className="mt-8 text-sm leading-6 text-neutral-500">
+                  {t(item.body)}
+                </p>
+              </article>
             ))}
           </div>
         </section>
@@ -163,24 +143,19 @@ export default function Home() {
               {t("Market Presence")}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-neutral-500">
-              {t("Pricing and liquidity are determined by external markets.")}
+              {t("View KSOL across public market and explorer surfaces.")}
             </p>
           </div>
-          <div className={`${surfaceClass} grid gap-3 p-4 md:grid-cols-4`}>
-            {marketLinks.map((link) => (
+          <div className="grid gap-3 md:grid-cols-3">
+            {externalLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex min-h-20 flex-col items-center justify-center rounded-3xl bg-black/24 px-5 text-center transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.07]"
+                className={`${surfaceClass} flex min-h-20 items-center justify-center rounded-3xl px-5 text-sm font-semibold text-neutral-100 transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.045]`}
               >
-                <span className="text-sm font-semibold text-neutral-100">
-                  {link.name}
-                </span>
-                <span className="mt-1 text-xs text-neutral-500">
-                  {link.categoryLabel}
-                </span>
+                {link.name}
               </a>
             ))}
           </div>
@@ -192,11 +167,8 @@ export default function Home() {
               {t("Token Information")}
             </p>
             <h2 className="mt-3 text-4xl font-semibold text-white">
-              {t("On-chain reference")}
+              {t("Token Information")}
             </h2>
-            <p className="mt-4 text-sm text-neutral-500">
-              {t("All token data is verifiable via public Solana explorers.")}
-            </p>
           </div>
           <div className={`${surfaceClass} divide-y divide-white/[0.06] p-2`}>
             {tokenInfo.map((item) => (
@@ -211,7 +183,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-3">
                   {item.solscan ? (
                     <a
-                      href={externalLinks[0].href}
+                      href={solscanLink}
                       target="_blank"
                       rel="noreferrer"
                       className="rounded-full bg-white/[0.055] px-4 py-1.5 text-xs font-medium text-neutral-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-200 hover:bg-white/[0.09] hover:text-white"
@@ -226,116 +198,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
-          <div className="mb-8">
-            <p className="text-sm text-neutral-500">
-              {t("Liquidity Context")}
-            </p>
-            <h2 className="mt-3 text-4xl font-semibold text-white">
-              {t("External market depth")}
-            </h2>
-          </div>
-          <div className={`${surfaceClass} p-7`}>
-            <div className="grid gap-4 md:grid-cols-2">
-              {liquidityContext.map((item) => (
-                <div key={item.label} className="rounded-3xl bg-black/20 p-5">
-                  <p className="text-xs text-neutral-500">{t(item.label)}</p>
-                  <p className="mt-2 font-medium text-neutral-100">
-                    {t(item.value)}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 max-w-3xl text-sm leading-6 text-neutral-500">
-              {t(
-                "Liquidity and price are dependent on external pool depth and trading activity.",
-              )}
-            </p>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
-          <div className="mb-8">
-            <p className="text-sm text-neutral-500">
-              {t("Official Resources")}
-            </p>
-            <h2 className="mt-3 text-4xl font-semibold text-white">
-              {t("Official Resources")}
-            </h2>
-          </div>
-          <div className={`${surfaceClass} divide-y divide-white/[0.06] p-2`}>
-            {resourceLinks.map((link) => {
-              const content = (
-                <>
-                  <span className="font-medium text-neutral-100">
-                    {t(link.label)}
-                  </span>
-                  <span className="text-xs text-neutral-500">
-                    {t(link.note)}
-                  </span>
-                </>
-              );
-
-              return link.internal ? (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="flex items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/[0.035]"
-                >
-                  {content}
-                </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/[0.035]"
-                >
-                  {content}
-                </a>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
-          <div className="mb-8">
-            <p className="text-sm text-neutral-500">
-              {t("Verification Checklist")}
-            </p>
-            <h2 className="mt-3 text-4xl font-semibold text-white">
-              {t("Verification Checklist")}
-            </h2>
-          </div>
-          <div className={`${surfaceClass} grid gap-3 p-4 md:grid-cols-4`}>
-            {verificationItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-3xl bg-black/20 p-5 text-sm text-neutral-300 transition hover:bg-white/[0.055]"
-              >
-                {t(item.label)}
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl border-b border-white/[0.05] px-6 py-14">
-          <div className={`${surfaceClass} p-7`}>
-            <h2 className="text-xl font-semibold text-white">
-              {t("Market Context")}
-            </h2>
-            <p className="mt-4 max-w-3xl leading-7 text-neutral-400">
-              {t(
-                "KSOL market pricing depends on external liquidity pools, routing availability, and trading activity. Users should verify market conditions before interacting.",
-              )}
-            </p>
-          </div>
-        </section>
-
         <section className="mx-auto max-w-6xl px-6 py-14">
           <div className={`${surfaceClass} p-7`}>
             <h2 className="text-xl font-semibold text-white">
@@ -343,7 +205,7 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-3xl leading-7 text-neutral-400">
               {t(
-                "KSOL is a reference-based digital unit and does not guarantee price stability or asset backing. Market pricing may vary.",
+                "KSOL is a SOL-referenced digital unit. Market pricing, liquidity, and transfer conditions depend on external market activity and on-chain conditions.",
               )}
             </p>
           </div>

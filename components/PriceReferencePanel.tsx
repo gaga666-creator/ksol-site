@@ -31,7 +31,7 @@ export function PriceReferencePanel() {
           <p className="mt-1 font-mono text-sm text-neutral-200">SOL/USD</p>
         </div>
         <div className="rounded-2xl bg-black/25 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-          <p className="text-xs text-neutral-500">{t("Peg Target")}</p>
+          <p className="text-xs text-neutral-500">{t("Reference Target")}</p>
           <p className="mt-1 font-mono text-sm text-neutral-200">1.00</p>
         </div>
       </div>

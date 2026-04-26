@@ -23,13 +23,6 @@ export const externalLinks = [
     href: `https://dexscreener.com/solana/${tokenMintAddress}`,
     description: "View external liquidity and pair information.",
   },
-  {
-    label: "Jupiter",
-    name: "Jupiter",
-    category: "Aggregator availability dependent on routing",
-    href: `https://jup.ag/swap?inputMint=So11111111111111111111111111111111111111112&outputMint=${tokenMintAddress}`,
-    description: "Routing availability depends on Jupiter market routing.",
-  },
 ];
 
 export const transparencyItems = [
