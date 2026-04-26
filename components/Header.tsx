@@ -4,16 +4,16 @@ import { KsolLogo } from "./KsolLogo";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-white/10 bg-[#050505]/82 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+    <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#050505]/82 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
-          <KsolLogo size={40} />
+          <KsolLogo size={32} />
           <div>
             <p className="text-sm font-semibold text-white">KSOL</p>
             <p className="text-xs text-neutral-400">SOL-Pegged Storage Asset</p>
           </div>
         </Link>
-        <nav className="flex items-center gap-2 text-sm text-neutral-300 sm:gap-5">
+        <nav className="flex items-center gap-4 text-sm text-neutral-300 sm:gap-6">
           <Link className="transition hover:text-white" href="/docs">
             Docs
           </Link>

@@ -4,10 +4,10 @@ import { KsolLogo } from "./KsolLogo";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 md:grid-cols-[1fr_auto]">
+    <footer className="border-t border-white/[0.06] bg-black">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-[1fr_auto]">
         <div className="flex gap-3">
-          <KsolLogo size={40} />
+          <KsolLogo size={32} />
           <div>
             <p className="font-semibold text-white">KSOL</p>
             <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-400">

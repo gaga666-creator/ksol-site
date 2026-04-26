@@ -16,3 +16,22 @@ body {
   color: #050505;
   background: #e5e5e5;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .system-float {
+    animation: system-float 7s ease-in-out infinite;
+  }
+}
+
+@keyframes system-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-1px);
+    opacity: 0.985;
+  }
+}

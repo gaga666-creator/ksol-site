@@ -35,13 +35,25 @@ const docsSections = [
   },
 ];
 
+const docsCardClass =
+  "system-float rounded-3xl bg-gradient-to-br from-white/[0.07] via-white/[0.035] to-white/[0.02] p-6 shadow-[0_18px_44px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_24px_58px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.12)]";
+
+const docsPillClass =
+  "rounded-full bg-white/[0.055] px-4 py-2 text-sm font-medium text-neutral-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur transition duration-200 hover:bg-white/[0.09] hover:text-white hover:shadow-[0_12px_28px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.12)]";
+
+const docsStatusItems = [
+  { label: "Last updated", value: "April 26, 2026" },
+  { label: "Reference model", value: "v1.0" },
+  { label: "Document type", value: "Official reference" },
+];
+
 export default function DocsPage() {
   return (
     <>
       <Header />
       <main className="bg-[#050505] text-neutral-100">
-        <section className="border-b border-white/10 bg-[radial-gradient(circle_at_12%_0%,rgba(245,245,245,0.12),transparent_26%),linear-gradient(180deg,#050505,#111111)]">
-          <div className="mx-auto max-w-6xl px-5 py-14">
+        <section className="border-b border-white/[0.06] bg-[radial-gradient(circle_at_12%_0%,rgba(245,245,245,0.1),transparent_28%),linear-gradient(180deg,#050505,#101010)]">
+          <div className="mx-auto max-w-6xl px-6 py-16">
             <p className="text-xs font-semibold uppercase text-neutral-500">
               Official Reference
             </p>
@@ -52,14 +64,29 @@ export default function DocsPage() {
               A conservative overview of KSOL token information, peg reference,
               redemption considerations, and third-party display risks.
             </p>
+            <div className="mt-8 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+              {docsStatusItems.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl bg-white/[0.035] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                >
+                  <p className="text-[11px] uppercase text-neutral-500">
+                    {item.label}
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-neutral-200">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-6xl gap-5 px-5 py-12">
+        <section className="mx-auto grid max-w-6xl gap-5 px-6 py-14">
           {docsSections.map((section, index) => (
             <article
               key={section.title}
-              className="grid gap-5 rounded-3xl border border-white/10 bg-white/[0.045] p-6 shadow-[0_18px_44px_rgba(0,0,0,0.18)] backdrop-blur-xl transition hover:border-white/20 hover:shadow-[0_22px_54px_rgba(0,0,0,0.24)] md:grid-cols-[120px_1fr]"
+              className={`grid gap-5 md:grid-cols-[120px_1fr] ${docsCardClass}`}
             >
               <p className="font-mono text-sm text-neutral-500">
                 {String(index + 1).padStart(2, "0")}
@@ -72,7 +99,7 @@ export default function DocsPage() {
                   {section.body}
                 </p>
                 {section.address ? (
-                  <div className="mt-5 flex flex-col gap-3 rounded-3xl border border-white/10 bg-black/40 p-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+                  <div className="mt-5 flex flex-col gap-3 rounded-3xl bg-black/35 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur sm:flex-row sm:items-center sm:justify-between">
                     <p className="break-words font-mono text-sm text-neutral-200">
                       {tokenMintAddress}
                     </p>
@@ -84,9 +111,9 @@ export default function DocsPage() {
           ))}
         </section>
 
-        <section className="border-t border-white/10 bg-black/80">
-          <div className="mx-auto max-w-6xl px-5 py-12">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_44px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+        <section className="bg-black/55">
+          <div className="mx-auto max-w-6xl px-6 py-14">
+            <div className={docsCardClass}>
               <h2 className="text-2xl font-semibold text-white">
                 External References
               </h2>
@@ -97,7 +124,7 @@ export default function DocsPage() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-sm font-medium text-neutral-200 backdrop-blur transition hover:border-white/30 hover:bg-white/[0.07] hover:text-white hover:shadow-[0_12px_28px_rgba(0,0,0,0.24)]"
+                    className={docsPillClass}
                   >
                     {link.name}
                   </a>
