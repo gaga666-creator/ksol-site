@@ -9,9 +9,7 @@ import { useLanguage } from "./LanguageProvider";
 const navItems = [
   { label: "Overview", href: "#overview" },
   { label: "Market", href: "#market" },
-  { label: "Token", href: "#token" },
-  { label: "Notice", href: "#notice" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "#faq" },
 ];
 
 export function Header() {

@@ -5,9 +5,9 @@ import { KsolLogo } from "./KsolLogo";
 import { useLanguage } from "./LanguageProvider";
 
 const resourceLinks = [
-  { label: "Token Info", href: "#token" },
-  { label: "Risk Notice", href: "#notice" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Overview", href: "#overview" },
+  { label: "Market", href: "#market" },
+  { label: "About", href: "#faq" },
 ];
 
 export function Footer() {

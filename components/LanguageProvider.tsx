@@ -20,8 +20,6 @@ const cn = {
   Copy: "\u8907\u88fd",
   Copied: "\u5df2\u8907\u88fd",
   "View Token Info": "\u67e5\u770b\u4ee3\u5e63\u8cc7\u8a0a",
-  "View on Solscan": "\u5728 Solscan \u67e5\u770b",
-  "View Market": "\u67e5\u770b\u5e02\u5834",
   "View Liquidity Pool": "\u67e5\u770b\u6d41\u52d5\u6027\u6c60",
   "Open Solscan": "\u958b\u555f Solscan",
   Open: "\u958b\u555f",
@@ -29,8 +27,14 @@ const cn = {
   "Open Dexscreener": "\u958b\u555f Dexscreener",
   "Open OKX DEX": "\u958b\u555f OKX DEX",
   "Open CoinMarketCap": "\u958b\u555f CoinMarketCap",
+  "ABOUT KSOL": "\u95dc\u65bc KSOL",
+  "What is KSOL": "KSOL \u662f\u4ec0\u9ebc",
+  "How to verify": "\u5982\u4f55\u9a57\u8b49",
+  "Why warnings appear": "\u70ba\u4ec0\u9ebc\u6703\u51fa\u73fe\u8b66\u793a",
+  "Price and liquidity": "\u50f9\u683c\u8207\u6d41\u52d5\u6027",
   Market: "\u5e02\u5834",
   Overview: "\u6982\u89bd",
+  About: "\u95dc\u65bc",
   Token: "\u4ee3\u5e63",
   Notice: "\u63d0\u793a",
   FAQ: "\u5e38\u898b\u554f\u984c",
@@ -47,12 +51,19 @@ const cn = {
     "Solana \u4e0a\u7684\u7368\u7acb\u4ee3\u5e63\u8cc7\u7522\u3002",
   "KSOL is designed as a transparent, verifiable on-chain asset with public explorer access and third-party market displays. Market data may vary depending on liquidity, trading activity, and external indexers.":
     "KSOL \u662f\u4e00\u500b\u53ef\u900f\u904e\u516c\u958b\u5340\u584a\u700f\u89bd\u5668\u67e5\u8a62\u7684\u93c8\u4e0a\u8cc7\u7522\uff0c\u4e26\u63d0\u4f9b\u7b2c\u4e09\u65b9\u5e02\u5834\u986f\u793a\u5165\u53e3\u3002\u5e02\u5834\u8cc7\u6599\u53ef\u80fd\u56e0\u6d41\u52d5\u6027\u3001\u4ea4\u6613\u6d3b\u8e8d\u5ea6\u8207\u5916\u90e8\u7d22\u5f15\u5668\u72c0\u614b\u800c\u4e0d\u540c\u3002",
+  "KSOL is an independent SPL token on Solana. It is designed as a reference-based unit for storage representation and internal transfer. It does not represent native SOL and should not be treated as SOL itself.":
+    "KSOL \u662f Solana \u4e0a\u7684\u7368\u7acb SPL \u4ee3\u5e63\uff0c\u7528\u65bc\u5132\u5b58\u8868\u793a\u8207\u5167\u90e8\u8f49\u79fb\u7684\u53c3\u8003\u578b\u55ae\u4f4d\u3002KSOL \u4e0d\u4ee3\u8868\u539f\u751f SOL\uff0c\u4e5f\u4e0d\u61c9\u88ab\u8996\u70ba SOL \u672c\u8eab\u3002",
+  "Use the mint address published on this site and verify through Solscan and other trusted explorers.":
+    "\u8acb\u4f7f\u7528\u672c\u7db2\u7ad9\u516c\u5e03\u7684 mint address\uff0c\u4e26\u900f\u904e Solscan \u6216\u5176\u4ed6\u53ef\u4fe1\u5340\u584a\u700f\u89bd\u5668\u9a57\u8b49\u3002",
+  "Some platforms may show caution labels based on token name similarity, liquidity, trading history, metadata, or their own risk models. Always verify the mint address before interacting.":
+    "\u90e8\u5206\u5e73\u53f0\u53ef\u80fd\u6839\u64da\u4ee3\u5e63\u540d\u7a31\u76f8\u4f3c\u5ea6\u3001\u6d41\u52d5\u6027\u3001\u4ea4\u6613\u7d00\u9304\u3001metadata \u6216\u81ea\u8eab\u98a8\u96aa\u6a21\u578b\u986f\u793a\u8b66\u793a\u3002\u4e92\u52d5\u524d\u8acb\u52d9\u5fc5\u78ba\u8a8d mint address\u3002",
+  "KSOL market price is determined by external liquidity and trading activity. This website does not provide assurance for price, liquidity, or third-party platform display status.":
+    "KSOL \u5e02\u5834\u50f9\u683c\u7531\u5916\u90e8\u6d41\u52d5\u6027\u8207\u4ea4\u6613\u6d3b\u52d5\u6c7a\u5b9a\u3002\u672c\u7db2\u7ad9\u4e0d\u4fdd\u8b49\u50f9\u683c\u3001\u6d41\u52d5\u6027\u6216\u7b2c\u4e09\u65b9\u5e73\u53f0\u986f\u793a\u72c0\u614b\u3002",
   Chain: "\u93c8",
   "Mint Address": "\u4ee3\u5e63\u5730\u5740",
   "Liquidity Pair": "\u6d41\u52d5\u6027\u4ea4\u6613\u5c0d",
   Solana: "Solana",
   SOL: "SOL",
-  "Token Information": "\u4ee3\u5e63\u8cc7\u8a0a",
   "Primary verification should start with the mint address.":
     "\u4e3b\u8981\u9a57\u8b49\u61c9\u5f9e Mint Address \u958b\u59cb\u3002",
   "Token Name": "\u4ee3\u5e63\u540d\u7a31",
@@ -86,9 +97,6 @@ const cn = {
     "\u67e5\u770b DEX \u4ea4\u6613\u5c0d\u8cc7\u6599\u3001\u6d41\u52d5\u6027\u8207\u4ea4\u6613\u6d3b\u52d5\u3002",
   "Third-party DEX interface reference. Warning labels may appear depending on OKX's internal risk and token similarity rules.":
     "\u7b2c\u4e09\u65b9 DEX \u4ecb\u9762\u53c3\u8003\u3002OKX \u53ef\u80fd\u4f9d\u64da\u5176\u5167\u90e8\u98a8\u96aa\u8207\u4ee3\u5e63\u76f8\u4f3c\u6027\u898f\u5247\u986f\u793a\u63d0\u793a\u6a19\u7c64\u3002",
-  "Liquidity Context": "\u6d41\u52d5\u6027\u80cc\u666f",
-  "KSOL market pricing is determined by external DEX liquidity pools, trading activity, and third-party data indexers. Displayed price, market cap, volume, and warnings may vary across platforms.":
-    "KSOL \u7684\u5e02\u5834\u50f9\u683c\u7531\u5916\u90e8 DEX \u6d41\u52d5\u6027\u6c60\u3001\u4ea4\u6613\u6d3b\u52d5\u8207\u7b2c\u4e09\u65b9\u8cc7\u6599\u7d22\u5f15\u5668\u6c7a\u5b9a\u3002\u4e0d\u540c\u5e73\u53f0\u986f\u793a\u7684\u50f9\u683c\u3001\u5e02\u503c\u3001\u6210\u4ea4\u91cf\u8207\u98a8\u96aa\u63d0\u793a\u53ef\u80fd\u4e0d\u540c\u3002",
   "Liquidity visibility depends on external pool depth, routing availability, and market activity.":
     "\u6d41\u52d5\u6027\u53ef\u898b\u5ea6\u53d6\u6c7a\u65bc\u5916\u90e8\u6c60\u6df1\u5ea6\u3001\u8def\u7531\u53ef\u7528\u6027\u8207\u5e02\u5834\u6d3b\u52d5\u3002",
   "For long-term reliability, users should verify:":
