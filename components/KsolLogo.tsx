@@ -8,7 +8,7 @@ type KsolLogoProps = {
 export function KsolLogo({ size = 48, className = "" }: KsolLogoProps) {
   return (
     <Image
-      src="/token/ksol-logo.png"
+      src="/ksol-logo.png"
       alt="KSOL logo"
       width={size}
       height={size}
