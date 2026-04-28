@@ -3,9 +3,9 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KSOL | SOL-Referenced Digital Asset",
+  title: "KSOL | Official Token Information",
   description:
-    "KSOL is a SOL-referenced digital unit designed for internal transfer and storage representation.",
+    "Official information and verification entry point for the KSOL token asset on Solana.",
 };
 
 export default function RootLayout({

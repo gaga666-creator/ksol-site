@@ -15,7 +15,7 @@ export function PriceReferencePanel() {
         <KsolLogo size={40} />
         <div>
           <p className="text-sm font-medium text-neutral-300">
-            {t("PRICE REFERENCE")}
+            {t("MARKET DISPLAY")}
           </p>
         </div>
       </div>
@@ -27,12 +27,12 @@ export function PriceReferencePanel() {
       </p>
       <div className="mt-8 grid grid-cols-2 gap-3">
         <div className="rounded-2xl bg-black/25 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-          <p className="text-xs text-neutral-500">{t("Reference Pair")}</p>
+          <p className="text-xs text-neutral-500">{t("Market Context")}</p>
           <p className="mt-1 font-mono text-sm text-neutral-200">SOL/USD</p>
         </div>
         <div className="rounded-2xl bg-black/25 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-          <p className="text-xs text-neutral-500">{t("Reference Target")}</p>
-          <p className="mt-1 font-mono text-sm text-neutral-200">1.00</p>
+          <p className="text-xs text-neutral-500">Verification</p>
+          <p className="mt-1 font-mono text-sm text-neutral-200">Mint first</p>
         </div>
       </div>
       <a
