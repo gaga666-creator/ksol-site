@@ -10,24 +10,24 @@ import { externalLinks, tokenMintAddress } from "@/lib/ksol";
 
 const marketReferences = [
   {
-    label: "Birdeye",
-    description: "Market analytics and token activity reference.",
-    button: "Open Birdeye",
-  },
-  {
-    label: "Dexscreener",
-    description: "DEX pair display and trading surface.",
-    button: "Open Dexscreener",
-  },
-  {
     label: "OKX DEX",
     description: "Third-party DEX interface for swap routing.",
-    button: "Open OKX DEX",
+    button: "Open",
   },
   {
     label: "CoinMarketCap",
     description: "External market reference and token display.",
-    button: "Open CoinMarketCap",
+    button: "Open",
+  },
+  {
+    label: "Birdeye",
+    description: "Market analytics and token activity reference.",
+    button: "Open",
+  },
+  {
+    label: "Dexscreener",
+    description: "DEX pair display and trading surface.",
+    button: "Open",
   },
 ];
 
@@ -274,31 +274,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="mx-auto max-w-6xl px-6 py-16">
-          <div className="mb-8">
-            <h2 className="text-4xl font-semibold text-white">{t("FAQ")}</h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {faqs.map((item) => (
-              <article key={item.question} className={`${surfaceClass} p-6`}>
-                <h3 className="text-lg font-semibold text-white">
-                  {t(item.question)}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-neutral-400">
-                  {t(item.answer)}
-                </p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section
           id="notice"
           className="mx-auto max-w-6xl border-t border-white/[0.06] px-6 py-16"
         >
           <div className="rounded-2xl border border-amber-400/20 bg-amber-500/5 p-7 text-amber-100 shadow-sm">
             <h2 className="text-3xl font-semibold text-white">
-              {t("Market Data & Warning Notice")}
+              {t("Notice")}
             </h2>
             <p className="mt-5 max-w-4xl leading-7 text-amber-100/80">
               {t(
@@ -315,6 +297,24 @@ export default function Home() {
                 "The official mint address should be treated as the primary identifier for KSOL. Token name, logo, or ticker alone should not be used for verification.",
               )}
             </p>
+          </div>
+        </section>
+
+        <section id="faq" className="mx-auto max-w-6xl px-6 py-16">
+          <div className="mb-8">
+            <h2 className="text-4xl font-semibold text-white">{t("FAQ")}</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {faqs.map((item) => (
+              <article key={item.question} className={`${surfaceClass} p-6`}>
+                <h3 className="text-lg font-semibold text-white">
+                  {t(item.question)}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-neutral-400">
+                  {t(item.answer)}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
       </main>

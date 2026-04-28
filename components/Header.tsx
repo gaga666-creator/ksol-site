@@ -19,7 +19,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#050505]/82 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <KsolLogo size={32} />
           <div>
@@ -29,7 +29,7 @@ export function Header() {
             </p>
           </div>
         </Link>
-        <nav className="hidden items-center gap-8 text-sm text-neutral-300 md:flex">
+        <nav className="hidden items-center gap-10 text-sm text-neutral-300 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -40,8 +40,7 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <LanguageToggle />
+        <div className="flex items-center gap-3">
           <a
             href={okxDexHref}
             target="_blank"
@@ -50,6 +49,7 @@ export function Header() {
           >
             {t("Market")}
           </a>
+          <LanguageToggle />
         </div>
       </div>
     </header>

@@ -1,13 +1,10 @@
 "use client";
 
 import { KsolLogo } from "./KsolLogo";
-import { externalLinks } from "@/lib/ksol";
 import { useLanguage } from "./LanguageProvider";
 
 export function PriceReferencePanel() {
   const { t } = useLanguage();
-  const solscanLink =
-    externalLinks.find((link) => link.label === "Solscan")?.href ?? "#";
 
   return (
     <div className="rounded-[34px] bg-gradient-to-br from-white/[0.095] via-white/[0.042] to-white/[0.018] p-7 shadow-[0_32px_98px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
@@ -25,7 +22,7 @@ export function PriceReferencePanel() {
       <p className="mt-4 max-w-sm text-xs leading-5 text-neutral-500">
         {t("Pricing derived from external market activity.")}
       </p>
-      <div className="mt-8 grid grid-cols-2 gap-3">
+      <div className="mt-10 grid grid-cols-2 gap-3">
         <div className="rounded-2xl bg-black/25 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
           <p className="text-xs text-neutral-500">{t("Market Context")}</p>
           <p className="mt-1 font-mono text-sm text-neutral-200">SOL/USD</p>
@@ -35,14 +32,6 @@ export function PriceReferencePanel() {
           <p className="mt-1 font-mono text-sm text-neutral-200">Mint first</p>
         </div>
       </div>
-      <a
-        href={solscanLink}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-6 inline-flex text-xs font-medium text-neutral-400 transition hover:text-white"
-      >
-        {`${t("View on Solscan")} \u2192`}
-      </a>
     </div>
   );
 }

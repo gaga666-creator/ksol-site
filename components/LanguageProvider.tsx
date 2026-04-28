@@ -24,6 +24,7 @@ const cn = {
   "View Market": "\u67e5\u770b\u5e02\u5834",
   "View Liquidity Pool": "\u67e5\u770b\u6d41\u52d5\u6027\u6c60",
   "Open Solscan": "\u958b\u555f Solscan",
+  Open: "\u958b\u555f",
   "Open Birdeye": "\u958b\u555f Birdeye",
   "Open Dexscreener": "\u958b\u555f Dexscreener",
   "Open OKX DEX": "\u958b\u555f OKX DEX",
