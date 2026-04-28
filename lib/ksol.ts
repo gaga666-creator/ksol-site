@@ -1,6 +1,8 @@
 export const tokenMintAddress =
   "CJWDVgXoVrXKCpLM64pkqLjozyoqKedEJqZ5kSStsd95";
 
+export const okxDexHref = `https://web3.okx.com/zh-hant/dex-swap?inputChain=501&outputChain=501&inputCurrency=11111111111111111111111111111111&outputCurrency=${tokenMintAddress}`;
+
 export const externalLinks = [
   {
     label: "Solscan",
@@ -27,8 +29,15 @@ export const externalLinks = [
     label: "OKX DEX",
     name: "OKX DEX",
     category: "External DEX Interface",
-    href: `https://www.okx.com/web3/dex-swap#inputChain=501&inputCurrency=So11111111111111111111111111111111111111112&outputChain=501&outputCurrency=${tokenMintAddress}`,
+    href: okxDexHref,
     description: "Third-party DEX interface reference.",
+  },
+  {
+    label: "CoinMarketCap",
+    name: "CoinMarketCap",
+    category: "Market Display",
+    href: `https://dex.coinmarketcap.com/zh-tw/token/solana/${tokenMintAddress}/`,
+    description: "External market reference and token display.",
   },
 ];
 

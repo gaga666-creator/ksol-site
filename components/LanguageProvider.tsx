@@ -22,10 +22,12 @@ const cn = {
   "View Token Info": "\u67e5\u770b\u4ee3\u5e63\u8cc7\u8a0a",
   "View on Solscan": "\u5728 Solscan \u67e5\u770b",
   "View Market": "\u67e5\u770b\u5e02\u5834",
+  "View Liquidity Pool": "\u67e5\u770b\u6d41\u52d5\u6027\u6c60",
   "Open Solscan": "\u958b\u555f Solscan",
   "Open Birdeye": "\u958b\u555f Birdeye",
   "Open Dexscreener": "\u958b\u555f Dexscreener",
   "Open OKX DEX": "\u958b\u555f OKX DEX",
+  "Open CoinMarketCap": "\u958b\u555f CoinMarketCap",
   Market: "\u5e02\u5834",
   Overview: "\u6982\u89bd",
   Token: "\u4ee3\u5e63",
@@ -45,7 +47,6 @@ const cn = {
   "KSOL is designed as a transparent, verifiable on-chain asset with public explorer access and third-party market displays. Market data may vary depending on liquidity, trading activity, and external indexers.":
     "KSOL \u662f\u4e00\u500b\u53ef\u900f\u904e\u516c\u958b\u5340\u584a\u700f\u89bd\u5668\u67e5\u8a62\u7684\u93c8\u4e0a\u8cc7\u7522\uff0c\u4e26\u63d0\u4f9b\u7b2c\u4e09\u65b9\u5e02\u5834\u986f\u793a\u5165\u53e3\u3002\u5e02\u5834\u8cc7\u6599\u53ef\u80fd\u56e0\u6d41\u52d5\u6027\u3001\u4ea4\u6613\u6d3b\u8e8d\u5ea6\u8207\u5916\u90e8\u7d22\u5f15\u5668\u72c0\u614b\u800c\u4e0d\u540c\u3002",
   Chain: "\u93c8",
-  "Asset Context": "\u8cc7\u7522\u80cc\u666f",
   "Mint Address": "\u4ee3\u5e63\u5730\u5740",
   "Liquidity Pair": "\u6d41\u52d5\u6027\u4ea4\u6613\u5c0d",
   Solana: "Solana",
@@ -66,12 +67,18 @@ const cn = {
     "KSOL \u4e26\u4e0d\u5ba3\u7a31\u7b49\u540c\u65bc\u539f\u751f SOL\uff0c\u4e5f\u4e0d\u4ee3\u8868 Solana \u7684\u539f\u751f\u8cc7\u7522\u3002\u4f7f\u7528\u524d\u8acb\u4ee5\u5b98\u65b9 Mint Address \u4f5c\u70ba\u4e3b\u8981\u9a57\u8b49\u4f9d\u64da\u3002",
   "The official mint address should be treated as the primary identifier for KSOL. Token name, logo, or ticker alone should not be used for verification.":
     "\u5b98\u65b9 Mint Address \u61c9\u4f5c\u70ba\u8b58\u5225 KSOL \u7684\u4e3b\u8981\u4f9d\u64da\uff0c\u4e0d\u61c9\u53ea\u4f9d\u9760\u540d\u7a31\u3001Logo \u6216\u4ee3\u865f\u5224\u65b7\u3002",
-  "Verification & Market References":
-    "\u9a57\u8b49\u8207\u5e02\u5834\u67e5\u8a62",
   "Use external tools to verify KSOL's on-chain data and market activity. These platforms provide independent market displays and do not imply endorsement.":
     "\u4f7f\u7528\u5916\u90e8\u5de5\u5177\u67e5\u8a62 KSOL \u7684\u93c8\u4e0a\u8cc7\u6599\u8207\u5e02\u5834\u6d3b\u52d5\u3002\u9019\u4e9b\u5e73\u53f0\u50c5\u63d0\u4f9b\u7b2c\u4e09\u65b9\u5e02\u5834\u986f\u793a\uff0c\u4e0d\u4ee3\u8868\u80cc\u66f8\u6216\u4fdd\u8b49\u3002",
   "Verify token mint, holders, transfers, and on-chain metadata.":
     "\u67e5\u8a62\u4ee3\u5e63 Mint\u3001\u6301\u6709\u8005\u3001\u8f49\u5e33\u8207\u93c8\u4e0a metadata\u3002",
+  "Market analytics and token activity reference.":
+    "\u5e02\u5834\u5206\u6790\u8207\u4ee3\u5e63\u6d3b\u52d5\u53c3\u8003\u3002",
+  "DEX pair display and trading surface.":
+    "DEX \u4ea4\u6613\u5c0d\u5c55\u793a\u8207\u5e02\u5834\u4ecb\u9762\u3002",
+  "Third-party DEX interface for swap routing.":
+    "\u7b2c\u4e09\u65b9 DEX \u514c\u63db\u8def\u7531\u4ecb\u9762\u3002",
+  "External market reference and token display.":
+    "\u5916\u90e8\u5e02\u5834\u53c3\u8003\u8207\u4ee3\u5e63\u5c55\u793a\u9801\u3002",
   "View third-party market analytics and token activity.":
     "\u67e5\u770b\u7b2c\u4e09\u65b9\u5e02\u5834\u5206\u6790\u8207\u4ee3\u5e63\u6d3b\u52d5\u3002",
   "Check DEX pair data, liquidity, and trading activity.":
@@ -81,6 +88,8 @@ const cn = {
   "Liquidity Context": "\u6d41\u52d5\u6027\u80cc\u666f",
   "KSOL market pricing is determined by external DEX liquidity pools, trading activity, and third-party data indexers. Displayed price, market cap, volume, and warnings may vary across platforms.":
     "KSOL \u7684\u5e02\u5834\u50f9\u683c\u7531\u5916\u90e8 DEX \u6d41\u52d5\u6027\u6c60\u3001\u4ea4\u6613\u6d3b\u52d5\u8207\u7b2c\u4e09\u65b9\u8cc7\u6599\u7d22\u5f15\u5668\u6c7a\u5b9a\u3002\u4e0d\u540c\u5e73\u53f0\u986f\u793a\u7684\u50f9\u683c\u3001\u5e02\u503c\u3001\u6210\u4ea4\u91cf\u8207\u98a8\u96aa\u63d0\u793a\u53ef\u80fd\u4e0d\u540c\u3002",
+  "Liquidity visibility depends on external pool depth, routing availability, and market activity.":
+    "\u6d41\u52d5\u6027\u53ef\u898b\u5ea6\u53d6\u6c7a\u65bc\u5916\u90e8\u6c60\u6df1\u5ea6\u3001\u8def\u7531\u53ef\u7528\u6027\u8207\u5e02\u5834\u6d3b\u52d5\u3002",
   "For long-term reliability, users should verify:":
     "\u9577\u671f\u9a57\u8b49\u6642\uff0c\u5efa\u8b70\u4f7f\u7528\u8005\u78ba\u8a8d\uff1a",
   "Mint address": "Mint Address",

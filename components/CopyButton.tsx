@@ -7,12 +7,14 @@ type CopyButtonProps = {
   value: string;
   label?: string;
   copiedLabel?: string;
+  variant?: "text" | "icon";
 };
 
 export function CopyButton({
   value,
   label = "Copy",
   copiedLabel = "Copied",
+  variant = "text",
 }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const { t } = useLanguage();
@@ -21,6 +23,20 @@ export function CopyButton({
     await navigator.clipboard.writeText(value);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
+  }
+
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        onClick={copyValue}
+        aria-label={t(copied ? copiedLabel : label)}
+        title={t(copied ? copiedLabel : label)}
+        className="inline-grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.055] text-xs font-semibold text-neutral-300 transition duration-200 hover:border-white/20 hover:bg-white/[0.1] hover:text-white"
+      >
+        {copied ? "✓" : "⧉"}
+      </button>
+    );
   }
 
   return (

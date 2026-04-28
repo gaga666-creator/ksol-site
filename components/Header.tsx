@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { okxDexHref } from "@/lib/ksol";
 import { KsolLogo } from "./KsolLogo";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "./LanguageProvider";
@@ -18,7 +19,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#050505]/82 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <KsolLogo size={32} />
           <div>
@@ -28,7 +29,7 @@ export function Header() {
             </p>
           </div>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm text-neutral-300 md:flex">
+        <nav className="hidden items-center gap-8 text-sm text-neutral-300 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -42,7 +43,9 @@ export function Header() {
         <div className="flex items-center gap-2">
           <LanguageToggle />
           <a
-            href="#market"
+            href={okxDexHref}
+            target="_blank"
+            rel="noreferrer"
             className="rounded-full bg-white/[0.06] px-4 py-1.5 text-xs font-medium text-neutral-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur transition duration-200 hover:bg-white/[0.1] hover:text-white"
           >
             {t("Market")}

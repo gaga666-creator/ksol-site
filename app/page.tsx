@@ -8,36 +8,26 @@ import { PriceReferencePanel } from "@/components/PriceReferencePanel";
 import { useLanguage } from "@/components/LanguageProvider";
 import { externalLinks, tokenMintAddress } from "@/lib/ksol";
 
-const shortMint = `${tokenMintAddress.slice(0, 4)}...${tokenMintAddress.slice(-4)}`;
-
-const factItems = [
-  { label: "Chain", value: "Solana" },
-  { label: "Asset Context", value: "SOL" },
-  { label: "Mint Address", value: shortMint },
-  { label: "Liquidity Pair", value: "SOL/KSOL" },
-];
-
 const marketReferences = [
   {
-    label: "Solscan",
-    description: "Verify token mint, holders, transfers, and on-chain metadata.",
-    button: "Open Solscan",
-  },
-  {
     label: "Birdeye",
-    description: "View third-party market analytics and token activity.",
+    description: "Market analytics and token activity reference.",
     button: "Open Birdeye",
   },
   {
     label: "Dexscreener",
-    description: "Check DEX pair data, liquidity, and trading activity.",
+    description: "DEX pair display and trading surface.",
     button: "Open Dexscreener",
   },
   {
     label: "OKX DEX",
-    description:
-      "Third-party DEX interface reference. Warning labels may appear depending on OKX's internal risk and token similarity rules.",
+    description: "Third-party DEX interface for swap routing.",
     button: "Open OKX DEX",
+  },
+  {
+    label: "CoinMarketCap",
+    description: "External market reference and token display.",
+    button: "Open CoinMarketCap",
   },
 ];
 
@@ -150,29 +140,10 @@ export default function Home() {
                 >
                   {t("View Market")}
                 </a>
-                <CopyButton value={tokenMintAddress} />
               </div>
             </div>
 
             <PriceReferencePanel />
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl border-b border-white/[0.06] px-6 py-12">
-          <div className="grid gap-4 md:grid-cols-4">
-            {factItems.map((item) => (
-              <article
-                key={item.label}
-                className={`${surfaceClass} p-6 hover:border-white/20`}
-              >
-                <p className="whitespace-nowrap text-sm leading-5 text-neutral-500">
-                  {t(item.label)}
-                </p>
-                <p className="mt-4 whitespace-nowrap text-lg font-semibold leading-6 text-white">
-                  {t(item.value)}
-                </p>
-              </article>
-            ))}
           </div>
         </section>
 
@@ -189,17 +160,14 @@ export default function Home() {
                 {t("Primary verification should start with the mint address.")}
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={solscanLink}
-                target="_blank"
-                rel="noreferrer"
-                className={`${pillClass} border border-white/15 text-white hover:bg-white/10`}
-              >
-                {t("View on Solscan")}
-              </a>
-              <CopyButton value={tokenMintAddress} />
-            </div>
+            <a
+              href={solscanLink}
+              target="_blank"
+              rel="noreferrer"
+              className={`${pillClass} w-fit border border-white/15 text-white hover:bg-white/10`}
+            >
+              {t("View on Solscan")}
+            </a>
           </div>
           <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#101010] shadow-sm">
             {tokenInfo.map((item) => (
@@ -208,43 +176,22 @@ export default function Home() {
                 className="grid gap-3 border-b border-white/10 px-5 py-5 last:border-b-0 md:grid-cols-[210px_1fr] md:items-center"
               >
                 <p className="text-sm text-neutral-500">{t(item.label)}</p>
-                <p
-                  className={
-                    item.isAddress
-                      ? "break-all font-mono text-sm text-neutral-100"
-                      : "text-sm font-medium text-neutral-100"
-                  }
-                >
-                  {t(item.value)}
-                </p>
+                <div className="flex min-w-0 items-center gap-3">
+                  <p
+                    className={
+                      item.isAddress
+                        ? "min-w-0 break-all font-mono text-sm text-neutral-100"
+                        : "text-sm font-medium text-neutral-100"
+                    }
+                  >
+                    {t(item.value)}
+                  </p>
+                  {item.isAddress ? (
+                    <CopyButton value={tokenMintAddress} variant="icon" />
+                  ) : null}
+                </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section
-          id="notice"
-          className="mx-auto max-w-6xl border-b border-white/[0.06] px-6 py-16"
-        >
-          <div className="rounded-2xl border border-amber-400/20 bg-amber-500/5 p-7 text-amber-100 shadow-sm">
-            <h2 className="text-3xl font-semibold text-white">
-              {t("Market Data & Warning Notice")}
-            </h2>
-            <p className="mt-5 max-w-4xl leading-7 text-amber-100/80">
-              {t(
-                "KSOL may appear with caution or similarity warnings on some third-party wallets, DEX interfaces, or analytics platforms. These notices are generated by external systems and may be based on token name similarity, liquidity depth, trading history, metadata availability, or internal risk models.",
-              )}
-            </p>
-            <p className="mt-4 max-w-4xl leading-7 text-amber-100/80">
-              {t(
-                "KSOL does not claim to be SOL, does not represent native SOL, and should always be verified by its official mint address before any interaction.",
-              )}
-            </p>
-            <p className="mt-4 max-w-4xl leading-7 text-amber-100/80">
-              {t(
-                "The official mint address should be treated as the primary identifier for KSOL. Token name, logo, or ticker alone should not be used for verification.",
-              )}
-            </p>
           </div>
         </section>
 
@@ -254,7 +201,7 @@ export default function Home() {
         >
           <div className="mb-8">
             <h2 className="mt-3 text-4xl font-semibold text-white">
-              {t("Verification & Market References")}
+              {t("Market")}
             </h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral-400">
               {t(
@@ -296,9 +243,17 @@ export default function Home() {
               </h2>
               <p className="mt-5 text-sm leading-7 text-neutral-400">
                 {t(
-                  "KSOL market pricing is determined by external DEX liquidity pools, trading activity, and third-party data indexers. Displayed price, market cap, volume, and warnings may vary across platforms.",
+                  "Liquidity visibility depends on external pool depth, routing availability, and market activity.",
                 )}
               </p>
+              <a
+                href={`https://raydium.io/liquidity-pools/?token=${tokenMintAddress}`}
+                target="_blank"
+                rel="noreferrer"
+                className={`${pillClass} mt-7 border border-white/15 text-white hover:bg-white/10`}
+              >
+                {t("View Liquidity Pool")}
+              </a>
             </div>
             <div className={`${surfaceClass} p-6`}>
               <p className="text-sm font-medium text-neutral-200">
@@ -334,6 +289,32 @@ export default function Home() {
                 </p>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section
+          id="notice"
+          className="mx-auto max-w-6xl border-t border-white/[0.06] px-6 py-16"
+        >
+          <div className="rounded-2xl border border-amber-400/20 bg-amber-500/5 p-7 text-amber-100 shadow-sm">
+            <h2 className="text-3xl font-semibold text-white">
+              {t("Market Data & Warning Notice")}
+            </h2>
+            <p className="mt-5 max-w-4xl leading-7 text-amber-100/80">
+              {t(
+                "KSOL may appear with caution or similarity warnings on some third-party wallets, DEX interfaces, or analytics platforms. These notices are generated by external systems and may be based on token name similarity, liquidity depth, trading history, metadata availability, or internal risk models.",
+              )}
+            </p>
+            <p className="mt-4 max-w-4xl leading-7 text-amber-100/80">
+              {t(
+                "KSOL does not claim to be SOL, does not represent native SOL, and should always be verified by its official mint address before any interaction.",
+              )}
+            </p>
+            <p className="mt-4 max-w-4xl leading-7 text-amber-100/80">
+              {t(
+                "The official mint address should be treated as the primary identifier for KSOL. Token name, logo, or ticker alone should not be used for verification.",
+              )}
+            </p>
           </div>
         </section>
       </main>
