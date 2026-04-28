@@ -1,0 +1,30 @@
+{
+  "name": "KSOL",
+  "symbol": "KSOL",
+  "description": "KSOL is an independent SPL token on Solana designed for transparent on-chain verification, internal transfer, and storage representation. KSOL does not represent native SOL. Market pricing is determined by external liquidity and trading activity.",
+  "image": "https://ksol-site.vercel.app/ksol-logo.png",
+  "external_url": "https://ksol-site.vercel.app",
+  "attributes": [
+    {
+      "trait_type": "Network",
+      "value": "Solana"
+    },
+    {
+      "trait_type": "Token Standard",
+      "value": "SPL"
+    },
+    {
+      "trait_type": "Category",
+      "value": "Reference Asset"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://ksol-site.vercel.app/ksol-logo.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  }
+}
