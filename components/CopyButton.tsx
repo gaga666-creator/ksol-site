@@ -34,7 +34,7 @@ export function CopyButton({
         title={t(copied ? copiedLabel : label)}
         className="inline-grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.055] text-xs font-semibold text-neutral-300 transition duration-200 hover:border-white/20 hover:bg-white/[0.1] hover:text-white"
       >
-        {copied ? "✓" : "⧉"}
+        {copied ? "\u2713" : "\u29c9"}
       </button>
     );
   }
